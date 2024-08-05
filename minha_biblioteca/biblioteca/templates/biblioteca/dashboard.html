@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            background-color: {{ request.session.cor_fundo|default:"#ffffff" }};
+        }
+    </style>
+</head>
+<body>
+    <h1>Minha Biblioteca</h1>
+    <a href="{% url 'adicionar_livro' %}">Adicionar Livro</a>
+    <a href="{% url 'personalizar' %}">Personalizar</a>
+    <a href="{% url 'logout' %}">Logout</a>
+    <ul>
+        {% for livro in livros %}
+            <li>{{ livro.titulo }} - {{ livro.autor }} ({{ livro.ano_publicacao }})</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
